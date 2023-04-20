@@ -216,6 +216,12 @@ sudo chmod -R 755 /var/www
 
 sudo service nginx restart
 
+sudo snap refresh core
+sudo apt-get remove certbot
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx
+
 log Done!
 echo ""
 echo Do not forget to create the .env files for each environment.
