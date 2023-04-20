@@ -3,7 +3,7 @@
 ############################################################################
 
 CONFIG_FILE=config.ini
-PHP_VER=7.3
+PHP_VER=7.4
 
 # do not modify anything from now on!
 
