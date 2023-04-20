@@ -83,11 +83,9 @@ install_software() {
     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     check_return_code $? "Unable to install Composer" $ERRCODE_APT_INSTALL
     rm composer-setup.php
-    sudo chown -R ubuntu:ubuntu ~/.composer
+    sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/composer
     check_return_code $? "Unable to chown Composer" $ERRCODE_APT_INSTALL
-    # speed up composer
-    composer global require hirak/prestissimo
-
+    
     log Installing Nodejs and Yarn...
     sudo apt install -y nodejs npm yarn
     check_return_code $? "Unable to install Nodejs and Yarn" $ERRCODE_APT_INSTALL
@@ -97,6 +95,7 @@ install_software() {
     check_return_code $? "Unable to install certbot" $ERRCODE_APT_INSTALL
     sudo apt install -y python3-pip
     check_return_code $? "Unable to install Python PIP" $ERRCODE_APT_INSTALL
+    pip3 install --upgrade --ignore-installed pip setuptools
     pip3 install certbot-dns-route53
     check_return_code $? "Unable to install certbot-dns-route53" $ERRCODE_APT_INSTALL
 
