@@ -172,7 +172,9 @@ log "Cloning from git repository..."
 
 git_dir=$git_repo-$(date --utc +%Y%m%d_%H%M%SZ)
 
-git clone -b $git_branch git@$git_site:$git_user/$git_repo.git $git_dir
+# git clone -b $git_branch git@$git_site:$git_user/$git_repo.git $git_dir
+git clone -b $git_branch https://$git_access_token@$git_site:$git_user/$git_repo.git $git_dir
+
 check_return_code $? "Error while running 'git clone'" $ERRCODE_GIT_CLONE
 
 # change to cloned repo just to get commit id
